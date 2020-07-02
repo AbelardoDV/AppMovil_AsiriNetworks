@@ -1,25 +1,8 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
   // Application Constructor
   initialize: function() {
     document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+
   },
 
   // deviceready Event Handler
@@ -28,7 +11,7 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent('deviceready');
-
+    document.getElementById('btnLogin').addEventListener("click", loggear);
   },
 
   // Update DOM on a Received Event
@@ -43,11 +26,34 @@ var app = {
     //Connecting to firebase
     cordova.plugins.firebase.messaging.subscribe("Nuevo_Tema");
 
+
+    //Loggin
+    auth = cordova.plugins.firebase.auth;
+    const btnLogin= $('#btnLogin');
+    // const btnSignUp= $('#btnSignUp');
+    const btnLogout= $('#btnLogout');
+    const txtEmail= $('#txtEmail');
+    const txtPassword= $('#txtPassword');
+
+
   }
 };
 
 app.initialize();
 
+function loggear(auth,email,pass){
+        const promise = cordova.plugins.firebase.auth.signInWithEmailAndPassword("abelardo.diaz@pucp.pe", "123456");
+        promise.catch(e=>console.log(e.mensagge))
+        cordova.plugins.firebase.auth.onAuthStateChanged(function(userInfo) {
+            if (userInfo) {
+                console.log("usuario logeado");
+            } else {
+                console.log("usuario log out")
+                // user was signed out
+            }
+        });
+
+}
 
 $(document).ready(function mywebsocketclient() {
 

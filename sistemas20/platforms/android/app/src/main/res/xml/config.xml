@@ -12,6 +12,10 @@
         <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="FirebaseAuthentication">
+        <param name="android-package" value="by.chemerisuk.cordova.firebase.FirebaseAuthenticationPlugin" />
+        <param name="onload" value="false" />
+    </feature>
     <name>sistemas20</name>
     <description>
     A sample Apache Cordova application that responds to the deviceready event.

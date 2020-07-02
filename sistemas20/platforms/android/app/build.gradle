@@ -305,6 +305,7 @@ dependencies {
     implementation "com.google.firebase:firebase-messaging:20.1.+"
     implementation "androidx.core:core:1.0.+"
     implementation "me.leolin:ShortcutBadger:1.1.22@aar"
+    implementation "com.google.firebase:firebase-auth:19.3.+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

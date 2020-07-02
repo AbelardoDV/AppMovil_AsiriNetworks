@@ -29,10 +29,11 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+
   <link rel="stylesheet" type="text/css" href="css/index.css">
   <!-- Bootstrap -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -43,12 +44,35 @@
 </head>
 
 <body>
+  <section id="login" class="text-center">
+    <form class="form-signin">
+         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+         <h1 class="h3 mb-3 font-weight-normal">Bienvenido</h1>
+               <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+         <!-- <div class="checkbox mb-3">
+           <label>
+             <input type="checkbox" value="remember-me"> Remember me
+           </label>
+         </div> -->
+         <button  id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+         <p class="mt-5 mb-3 text-muted">Asiri Networks 2020 &copy;</p>
+       </form>
+  </section>
+
+<section id="monitoreo" >
   <div class="container">
    <div class="row">    <!--id="deviceready" -->
       <section  class="col-md-12">
         <h3>Asiri Networks ©</h3>
   <div class="col-md-12">
-    <div id="deviceready">
+    <div class = "container">
+
+       <button id="btnLogout" class="btn btn-action">  <!--class="hide" -->
+        Log out
+      </button>
+    </div>
+  <div id="deviceready">
 Status: <a style="color:red;" id="status" class="blink"> CONNECTED</a>
 <p id="status_csv">Última actualización: N/A </p>
 </div>
@@ -226,6 +250,8 @@ Status: <a style="color:red;" id="status" class="blink"> CONNECTED</a>
         </div>
       </div>
     </div>
+</section>
+
     <div class="content-footer">
       <p>
         Asiri Networks© - 2020 <br>

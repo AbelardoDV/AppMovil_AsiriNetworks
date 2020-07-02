@@ -16,6 +16,7 @@
     "cordova-android": "^8.1.0",
     "cordova-plugin-androidx": "^1.0.2",
     "cordova-plugin-androidx-adapter": "^1.1.0",
+    "cordova-plugin-firebase-authentication": "^3.3.0",
     "cordova-plugin-firebase-lib": "^5.1.1"
   },
   "devDependencies": {
@@ -30,6 +31,9 @@
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-firebase-messaging": {
         "FIREBASE_MESSAGING_VERSION": "20.1.+"
+      },
+      "cordova-plugin-firebase-authentication": {
+        "FIREBASE_AUTH_VERSION": "19.3.+"
       }
     },
     "platforms": [

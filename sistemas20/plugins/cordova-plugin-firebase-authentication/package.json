@@ -1,0 +1,65 @@
+{
+  "_from": "cordova-plugin-firebase-authentication",
+  "_id": "cordova-plugin-firebase-authentication@3.3.0",
+  "_inBundle": false,
+  "_integrity": "sha512-LrDYxljswLLc4+cqZ2pUGw5T5Gjq0PSnFy3quwd7jh26iOqMSpqkhmglAI0MOrBiIVtQdDMkut+TwaleiamaVA==",
+  "_location": "/cordova-plugin-firebase-authentication",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-firebase-authentication",
+    "name": "cordova-plugin-firebase-authentication",
+    "escapedName": "cordova-plugin-firebase-authentication",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-firebase-authentication/-/cordova-plugin-firebase-authentication-3.3.0.tgz",
+  "_shasum": "30e2cc67ef809249bb18f0e114aa7d1045c51baa",
+  "_spec": "cordova-plugin-firebase-authentication",
+  "_where": "G:\\Proyecto_Monitoreo\\Aplicacion_Movil\\sistemas20",
+  "author": {
+    "name": "Maksim Chemerisuk",
+    "email": "chemerisuk@gmail.com",
+    "url": "https://github.com/chemerisuk"
+  },
+  "bugs": {
+    "url": "https://github.com/chemerisuk/cordova-plugin-firebase-authentication/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-firebase-authentication",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin for Firebase Authentication",
+  "homepage": "https://github.com/chemerisuk/cordova-plugin-firebase-authentication#readme",
+  "keywords": [
+    "cordova",
+    "firebase",
+    "authentication",
+    "analytics",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-firebase-authentication",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chemerisuk/cordova-plugin-firebase-authentication.git"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags",
+    "version": "replace -s 'version=\"(.+)(?=\">)' 'version=\"'$npm_package_version plugin.xml && git add plugin.xml"
+  },
+  "version": "3.3.0"
+}

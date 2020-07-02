@@ -24,6 +24,10 @@
       "FIREBASE_MESSAGING_VERSION": "20.1.+",
       "ANDROIDX_CORE_VERSION": "1.0.+",
       "PACKAGE_NAME": "com.sistemas20.app"
+    },
+    "cordova-plugin-firebase-authentication": {
+      "FIREBASE_AUTH_VERSION": "19.3.+",
+      "PACKAGE_NAME": "com.sistemas20.app"
     }
   },
   "dependent_plugins": {
