@@ -11,7 +11,9 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent('deviceready');
-    document.getElementById('btnLogin').addEventListener("click", loggear);
+    document.getElementById("btnLogin").addEventListener("click", hacerloggin);
+    document.getElementById("btnLogout").addEventListener("click", hacerlogout);
+
   },
 
   // Update DOM on a Received Event
@@ -25,15 +27,14 @@ var app = {
     console.log('Received Event: ' + id);
     //Connecting to firebase
     cordova.plugins.firebase.messaging.subscribe("Nuevo_Tema");
+    cordova.plugins.firebase.auth.onAuthStateChanged(cambioEstado);
 
 
-    //Loggin
-    auth = cordova.plugins.firebase.auth;
+
     const btnLogin= $('#btnLogin');
     // const btnSignUp= $('#btnSignUp');
     const btnLogout= $('#btnLogout');
-    const txtEmail= $('#txtEmail');
-    const txtPassword= $('#txtPassword');
+
 
 
   }
@@ -41,19 +42,56 @@ var app = {
 
 app.initialize();
 
-function loggear(auth,email,pass){
-        const promise = cordova.plugins.firebase.auth.signInWithEmailAndPassword("abelardo.diaz@pucp.pe", "123456");
-        promise.catch(e=>console.log(e.mensagge))
-        cordova.plugins.firebase.auth.onAuthStateChanged(function(userInfo) {
-            if (userInfo) {
-                console.log("usuario logeado");
-            } else {
-                console.log("usuario log out")
-                // user was signed out
-            }
-        });
+function hacerlogout(){
+    cordova.plugins.firebase.auth.signOut();
 
 }
+
+function cambioEstado(userInfo) {
+  if (userInfo) {
+      console.log("usuario logeado:"+userInfo.uid);
+      console.log(userInfo);
+      $('#btnLogout').removeClass("d-none");
+      $('#logginpage').addClass("d-none");
+      $('#monitoreo').removeClass("d-none");
+      // window.location.replace("monitoreo.html");
+  } else {
+      console.log("Not logged In")
+      $('#btnLogout').addClass("d-none");
+      $('#monitoreo').addClass("d-none");
+      $('#logginpage').removeClass("d-none");
+      // user was signed out
+  }
+};
+
+
+function hacerloggin(){
+        const txtEmail= $('#inputEmail');
+        const txtPassword= $('#inputPassword');
+        email = txtEmail.val();
+        pass = txtPassword.val();
+        console.log(email + " | " + pass);
+        console.log("Hacer Loggin");
+        cordova.plugins.firebase.auth.signInWithEmailAndPassword(email, pass).catch(e=>console.log(e.message));
+
+
+
+
+}
+
+
+
+// $(document).ready(function mywebsocketclient()){
+//
+//   cordova.plugins.firebase.auth.getCurrentUser().then(function(userInfo) {
+//   // user information or null if not logged in
+//     if(userInfo){
+//       window.location.replace("monitoreo.html");
+//     }
+//
+//   });
+//
+// }
 
 $(document).ready(function mywebsocketclient() {
 

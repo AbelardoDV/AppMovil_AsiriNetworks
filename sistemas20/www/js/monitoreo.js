@@ -11,8 +11,6 @@ var app = {
   // 'pause', 'resume', etc.
   onDeviceReady: function() {
     this.receivedEvent('deviceready');
-    document.getElementById("btnLogin").addEventListener("click", hacerloggin);
-    document.getElementById("btnLogout").addEventListener("click", hacerlogout);
 
   },
 
@@ -27,71 +25,12 @@ var app = {
     console.log('Received Event: ' + id);
     //Connecting to firebase
     cordova.plugins.firebase.messaging.subscribe("Nuevo_Tema");
-    cordova.plugins.firebase.auth.onAuthStateChanged(cambioEstado);
-
-
-
-    const btnLogin= $('#btnLogin');
-    // const btnSignUp= $('#btnSignUp');
-    const btnLogout= $('#btnLogout');
-
-
 
   }
 };
 
 app.initialize();
 
-function hacerlogout(){
-    cordova.plugins.firebase.auth.signOut();
-
-}
-
-function cambioEstado(userInfo) {
-  if (userInfo) {
-      console.log("usuario logeado:"+userInfo.uid);
-      console.log(userInfo);
-      $('#btnLogout').removeClass("d-none");
-      $('#logginpage').addClass("d-none");
-      $('#monitoreo').removeClass("d-none");
-      // window.location.replace("monitoreo.html");
-  } else {
-      console.log("Not logged In")
-      $('#btnLogout').addClass("d-none");
-      $('#monitoreo').addClass("d-none");
-      $('#logginpage').removeClass("d-none");
-      // user was signed out
-  }
-};
-
-
-function hacerloggin(){
-        const txtEmail= $('#inputEmail');
-        const txtPassword= $('#inputPassword');
-        email = txtEmail.val();
-        pass = txtPassword.val();
-        console.log(email + " | " + pass);
-        console.log("Hacer Loggin");
-        cordova.plugins.firebase.auth.signInWithEmailAndPassword(email, pass).catch(e=>console.log(e.message));
-
-
-
-
-}
-
-
-
-// $(document).ready(function mywebsocketclient()){
-//
-//   cordova.plugins.firebase.auth.getCurrentUser().then(function(userInfo) {
-//   // user information or null if not logged in
-//     if(userInfo){
-//       window.location.replace("monitoreo.html");
-//     }
-//
-//   });
-//
-// }
 
 $(document).ready(function mywebsocketclient() {
 

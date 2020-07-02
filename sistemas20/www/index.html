@@ -43,254 +43,224 @@
   <title>Asiri Networks</title>
 </head>
 
-<body>
-  <section id="login" class="text-center">
+<body class ="text-center">
+   <button  id="btnLogout" class="btn btn-lg btn-primary btn-block d-none">Log out</button>
+  <div id= "logginpage">
     <form class="form-signin">
-         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-         <h1 class="h3 mb-3 font-weight-normal">Bienvenido</h1>
-               <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
-               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+         <img class="mb-4 rounded" src="img/asirinetworks.PNG" width="250" height="100" alt="Responsive image">
+         <h1 class="h3 mb-3 font-weight-normal">Monitoring App</h1>
+               <input type="email" id="inputEmail" class="form-control" placeholder="Email"  required >
+               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required >
          <!-- <div class="checkbox mb-3">
            <label>
              <input type="checkbox" value="remember-me"> Remember me
            </label>
          </div> -->
-         <button  id="btnLogin" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+         <button  id="btnLogin" class="btn btn-lg btn-primary btn-block">Loggin</button>
+
+
          <p class="mt-5 mb-3 text-muted">Asiri Networks 2020 &copy;</p>
        </form>
-  </section>
-
-<section id="monitoreo" >
-  <div class="container">
-   <div class="row">    <!--id="deviceready" -->
-      <section  class="col-md-12">
-        <h3>Asiri Networks ©</h3>
-  <div class="col-md-12">
-    <div class = "container">
-
-       <button id="btnLogout" class="btn btn-action">  <!--class="hide" -->
-        Log out
-      </button>
     </div>
-  <div id="deviceready">
-Status: <a style="color:red;" id="status" class="blink"> CONNECTED</a>
-<p id="status_csv">Última actualización: N/A </p>
-</div>
-    <div class="panel panel-default">
 
-      <div class="panel-body">
-        <div class="pull-left">
-          <div class="btn-group">
-            <button type="button" class="btn btn-success btn-filter" data-target="pagado">Up</button>
-            <!-- <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button> -->
-            <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Down</button>
-            <button type="button" class="btn btn-warning btn-filter" data-target="all">All</button>
+    <div class="container" id="monitoreo">
+     <div class="row">    <!--id="deviceready" -->
+        <section  class="col-md-12">
+          <h3>Asiri Networks ©</h3>
+    <div class="col-md-12">
+      <div id="deviceready">
+  Status: <a style="color:red;" id="status" class="blink"> CONNECTED</a>
+  <p id="status_csv">Última actualización: N/A </p>
+  </div>
+
+  <br>
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <div class="pull-left">
+            <div class="btn-group">
+              <button type="button" class="btn btn-success btn-filter" data-target="pagado">Up</button>
+              <!-- <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button> -->
+              <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Down</button>
+              <button type="button" class="btn btn-warning btn-filter" data-target="all">All</button>
+
+            </div>
+          </div>
+          <div class="table-container">
+            <table class="table table-filter">
+              <thead>
+
+                  <th>Host Name</th>
+                  <th>Status</th>
+
+              </thead>
+              <tbody id="tbody">
+                <tr data-status="pagado">
+                  <!-- <td>
+                    <div class="ckbox">
+                      <input type="checkbox" id="checkbox1">
+                      <label for="checkbox1"></label>
+                    </div>
+                  </td> -->
+                  <!-- <td>
+                    <a href="javascript:;" class="star">
+                      <i  class="glyphicon glyphicon-star"></i>
+                    </a>
+                  </td> -->
+                  <td>
+                    <div class="media">
+                      <!-- <a href="#" class="pull-left">
+                        <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
+                      </a> -->
+                      <div class="media-body">
+                        <!-- <span class="media-meta pull-right">Febrero 13, 2020</span> -->
+                        <h4 class="title">
+                          NodoA
+                            </h4>
+                        <!-- <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p> -->
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="media">
+                    <div class="media-body">
+                      <h2 class="title">
+
+                        <span class="pagado">UP</span>
+                      </h2>
+
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr data-status="pagado">
+
+                      <td>
+                    <div class="media">
+
+                      <div class="media-body">
+
+                        <h4 class="title">
+                          NodoB
+
+                        </h4>
+
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="media">
+                    <div class="media-body">
+                      <h2 class="title">
+
+                        <span class="pagado">UP</span>
+                      </h2>
+
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr data-status="cancelado">
+
+
+                  <td>
+                    <div class="media">
+
+                      <div class="media-body">
+
+                        <h4 class="title">
+                          NodoC
+
+                        </h4>
+
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="media">
+                    <div class="media-body">
+                      <h2 class="title">
+
+                            <span class="cancelado">DOWN</span>
+                      </h2>
+
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr data-status="pagado" class="selected">
+
+
+                  <td>
+                    <div class="media">
+
+                      <div class="media-body">
+
+                        <h4 class="title">
+                          NodoD
+
+                        </h4>
+
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="media">
+                    <div class="media-body">
+                      <h2 class="title">
+
+                                <span class="pagado">UP</span>
+                      </h2>
+
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+                <tr data-status="cancelado">
+
+
+                  <td>
+                    <div class="media">
+
+                      <div class="media-body">
+
+                        <h4 class="title">
+                          NodoE
+
+                        </h4>
+
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                      <div class="media">
+                    <div class="media-body">
+                      <h2 class="title">
+
+                            <span class="cancelado">DOWN</span>
+                      </h2>
+
+                    </div>
+                  </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-        <div class="table-container">
-          <table class="table table-filter">
-            <thead>
-
-                <th>Host Name</th>
-                <th>Status</th>
-
-            </thead>
-            <tbody id="tbody">
-              <tr data-status="pagado">
-                <!-- <td>
-                  <div class="ckbox">
-                    <input type="checkbox" id="checkbox1">
-                    <label for="checkbox1"></label>
-                  </div>
-                </td> -->
-                <!-- <td>
-                  <a href="javascript:;" class="star">
-                    <i  class="glyphicon glyphicon-star"></i>
-                  </a>
-                </td> -->
-                <td>
-                  <div class="media">
-                    <!-- <a href="#" class="pull-left">
-                      <img src="https://s3.amazonaws.com/uifaces/faces/twitter/fffabs/128.jpg" class="media-photo">
-                    </a> -->
-                    <div class="media-body">
-                      <!-- <span class="media-meta pull-right">Febrero 13, 2020</span> -->
-                      <h4 class="title">
-                        NodoA
-                          </h4>
-                      <!-- <p class="summary">Ut enim ad minim veniam, quis nostrud exercitation...</p> -->
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="media">
-                  <div class="media-body">
-                    <h2 class="title">
-
-                      <span class="pagado">UP</span>
-                    </h2>
-
-                  </div>
-                </div>
-                </td>
-              </tr>
-              <tr data-status="pagado">
-
-                    <td>
-                  <div class="media">
-
-                    <div class="media-body">
-
-                      <h4 class="title">
-                        NodoB
-
-                      </h4>
-
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="media">
-                  <div class="media-body">
-                    <h2 class="title">
-
-                      <span class="pagado">UP</span>
-                    </h2>
-
-                  </div>
-                </div>
-                </td>
-              </tr>
-              <tr data-status="cancelado">
-
-
-                <td>
-                  <div class="media">
-
-                    <div class="media-body">
-
-                      <h4 class="title">
-                        NodoC
-
-                      </h4>
-
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="media">
-                  <div class="media-body">
-                    <h2 class="title">
-
-                          <span class="cancelado">DOWN</span>
-                    </h2>
-
-                  </div>
-                </div>
-                </td>
-              </tr>
-              <tr data-status="pagado" class="selected">
-
-
-                <td>
-                  <div class="media">
-
-                    <div class="media-body">
-
-                      <h4 class="title">
-                        NodoD
-
-                      </h4>
-
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="media">
-                  <div class="media-body">
-                    <h2 class="title">
-
-                              <span class="pagado">UP</span>
-                    </h2>
-
-                  </div>
-                </div>
-                </td>
-              </tr>
-              <tr data-status="cancelado">
-
-
-                <td>
-                  <div class="media">
-
-                    <div class="media-body">
-
-                      <h4 class="title">
-                        NodoE
-
-                      </h4>
-
-                    </div>
-                  </div>
-                </td>
-                <td>
-                    <div class="media">
-                  <div class="media-body">
-                    <h2 class="title">
-
-                          <span class="cancelado">DOWN</span>
-                    </h2>
-
-                  </div>
-                </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      </div>
+      <div class="content-footer">
+        <p>
+          Asiri Networks© - 2020 <br>
+          Powered By <a href="" target="_blank">ASN</a>
+        </p>
       </div>
     </div>
-</section>
+            </section>
 
-    <div class="content-footer">
-      <p>
-        Asiri Networks© - 2020 <br>
-        Powered By <a href="" target="_blank">ASN</a>
-      </p>
-    </div>
-  </div>
-          </section>
 
-                <!--
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Host</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <tr>
-              <td>Nodo-Nada</td>
-              <td>Down</td>
-            </tr>
-            <tr>
-              <td>Nodo-Todo</td>
-              <td>Up</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
-      <footer class="footer">
-        <div class="container">
-          <p class="text-muted">Asiri Networks @2020.</p>
-        </div>
-      </footer> -->
-
     </div>
-  </div>
-
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
