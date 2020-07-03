@@ -108,14 +108,15 @@ $(document).ready(function mywebsocketclient() {
   };
 
   sock.onmessage = function(event) {
+
     if (event.data.includes("actualizaci")) {
       console.log("Imprimiendo ultima actualizacion");
-      $('#status_csv').text("Última actualización:" + event.data);
+      $('#status_csv').text(event.data);
       console.log(event.data);
-    }
-
+    };
 
     if (event.data.includes("host_state")) {
+
       $('#tbody').empty();
       var employee_data = '';
       datos = null;

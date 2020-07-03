@@ -50,6 +50,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-support-google-services": "1.4.0",
     "cordova-plugin-firebase-messaging": "4.0.1",
     "cordova-plugin-firebase-authentication": "3.3.0",
-    "cordova-plugin-dialogs": "2.0.2"
+    "cordova-plugin-dialogs": "2.0.2",
+    "cordova-plugin-vibration": "3.1.1"
   };
 });

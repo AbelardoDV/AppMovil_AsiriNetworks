@@ -64,6 +64,12 @@
               "xml": "<service android:name=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
               "count": 1
             }
+          ],
+          "/manifest": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+              "count": 1
+            }
           ]
         }
       },
@@ -119,6 +125,9 @@
     },
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "com.sistemas20.app"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.sistemas20.app"
     }
   },
   "dependent_plugins": {},
@@ -173,6 +182,7 @@
     "cordova-support-google-services": "1.4.0",
     "cordova-plugin-firebase-messaging": "4.0.1",
     "cordova-plugin-firebase-authentication": "3.3.0",
-    "cordova-plugin-dialogs": "2.0.2"
+    "cordova-plugin-dialogs": "2.0.2",
+    "cordova-plugin-vibration": "3.1.1"
   }
 }
