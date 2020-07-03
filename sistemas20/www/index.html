@@ -44,35 +44,34 @@
 </head>
 
 <body class ="text-center">
-   <button  id="btnLogout" class="btn btn-lg btn-primary btn-block d-none">Log out</button>
-  <div id= "logginpage">
-    <form class="form-signin">
+
+  <div id= "loginpage">
+    <div class="form-signin">
          <img class="mb-4 rounded" src="img/asirinetworks.PNG" width="250" height="100" alt="Responsive image">
          <h1 class="h3 mb-3 font-weight-normal">Monitoring App</h1>
-               <input type="email" id="inputEmail" class="form-control" placeholder="Email"  required >
-               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required >
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email"   >  <!--  required -->
+               <input type="password" id="inputPassword" class="form-control" placeholder="Password" ><!--  required -->
          <!-- <div class="checkbox mb-3">
            <label>
              <input type="checkbox" value="remember-me"> Remember me
            </label>
          </div> -->
-         <button  id="btnLogin" class="btn btn-lg btn-primary btn-block">Loggin</button>
-
-
+         <button  id="botonIniciar" class="btn btn-lg btn-primary btn-block">Login</button>
          <p class="mt-5 mb-3 text-muted">Asiri Networks 2020 &copy;</p>
-       </form>
+       </div>
     </div>
 
-    <div class="container" id="monitoreo">
-     <div class="row">    <!--id="deviceready" -->
+<div class="container d-none" id="monitoreopage">
+     <div class="row">
         <section  class="col-md-12">
           <h3>Asiri Networks ©</h3>
     <div class="col-md-12">
-      <div id="deviceready">
+      <div>
   Status: <a style="color:red;" id="status" class="blink"> CONNECTED</a>
   <p id="status_csv">Última actualización: N/A </p>
   </div>
-
+  <p id="correoUsuario"> correo </p>
+ <button  id="btnLogout" class="btn btn-outline-danger">Log out</button>
   <br>
       <div class="panel panel-default">
 
@@ -251,8 +250,7 @@
       </div>
       <div class="content-footer">
         <p>
-          Asiri Networks© - 2020 <br>
-          Powered By <a href="" target="_blank">ASN</a>
+          Asiri Networks© - 2020 <br>          
         </p>
       </div>
     </div>

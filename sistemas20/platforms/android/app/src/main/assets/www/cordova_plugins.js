@@ -23,6 +23,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "merges": [
         "cordova.plugins.firebase.auth"
       ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification",
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
+      "id": "cordova-plugin-dialogs.notification_android",
+      "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -33,6 +49,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-support-android-plugin": "1.0.2",
     "cordova-support-google-services": "1.4.0",
     "cordova-plugin-firebase-messaging": "4.0.1",
-    "cordova-plugin-firebase-authentication": "3.3.0"
+    "cordova-plugin-firebase-authentication": "3.3.0",
+    "cordova-plugin-dialogs": "2.0.2"
   };
 });
