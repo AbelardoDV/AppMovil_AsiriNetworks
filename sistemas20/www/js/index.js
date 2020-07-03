@@ -8,6 +8,7 @@ var app = {
     cordova.plugins.firebase.messaging.subscribe("Nuevo_Tema");
     document.getElementById("botonIniciar").addEventListener("click", iniciarsession);
     document.getElementById("btnLogout").addEventListener("click", hacerlogout);
+
     cordova.plugins.firebase.auth.onAuthStateChanged(function(userInfo) {
         if (userInfo) {
             //session iniciada
@@ -16,13 +17,13 @@ var app = {
             $("#correoUsuario").html("User: " +userInfo.email);
             $("#loginpage").addClass("d-none");
             $("#monitoreopage").removeClass("d-none");
-
-
         } else {//session finalizada
             console.log("session finalizada");
             $("#loginpage").removeClass("d-none");
             $("#monitoreopage").addClass("d-none");
             $('#botonIniciar').removeClass("d-none");
+
+
         }
     });
 
@@ -87,7 +88,8 @@ function iniciarsession(){
 function hacerlogout(){
     cordova.plugins.firebase.auth.signOut();
 
-}
+};
+
 
 
 
@@ -106,8 +108,9 @@ $(document).ready(function mywebsocketclient() {
   };
 
   sock.onmessage = function(event) {
-    if (event.data.includes("CSV")) {
-      $('#status_csv').text("Última actualización:" + event.data);
+    if (event.data.includes("actualizaci")) {
+      console.log("Imprimiendo ultima actualizacion");
+      $('#status_csv').text(event.data);
       console.log(event.data);
     }
 

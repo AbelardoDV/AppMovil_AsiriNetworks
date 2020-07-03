@@ -8,6 +8,7 @@ var app = {
     cordova.plugins.firebase.messaging.subscribe("Nuevo_Tema");
     document.getElementById("botonIniciar").addEventListener("click", iniciarsession);
     document.getElementById("btnLogout").addEventListener("click", hacerlogout);
+
     cordova.plugins.firebase.auth.onAuthStateChanged(function(userInfo) {
         if (userInfo) {
             //session iniciada
@@ -16,13 +17,13 @@ var app = {
             $("#correoUsuario").html("User: " +userInfo.email);
             $("#loginpage").addClass("d-none");
             $("#monitoreopage").removeClass("d-none");
-
-
         } else {//session finalizada
             console.log("session finalizada");
             $("#loginpage").removeClass("d-none");
             $("#monitoreopage").addClass("d-none");
             $('#botonIniciar').removeClass("d-none");
+
+
         }
     });
 
@@ -87,113 +88,73 @@ function iniciarsession(){
 function hacerlogout(){
     cordova.plugins.firebase.auth.signOut();
 
-}
+};
 
 
 
 
+$(document).ready(function mywebsocketclient() {
 
 
-// function cambioEstado(userInfo) {
-//   if (userInfo) {
-//       console.log("usuario logeado:"+userInfo.uid);
-//       console.log(userInfo);
-//       $('#btnLogout').removeClass("d-none");
-//       $('#logginpage').addClass("d-none");
-//       $('#monitoreo').removeClass("d-none");
-//       // window.location.replace("monitoreo.html");
-//   } else {
-//
-//       console.log("Not logged In")
-//       $('#btnLogout').addClass("d-none");
-//       $('#monitoreo').addClass("d-none");
-//       $('#logginpage').removeClass("d-none");
-//       // user was signed out
-//
-//   }
-// };
+  var sock = new WebSocket("wss://54.167.147.1");
 
 
+  sock.onopen = function(event) {
+    $('#status').text('CONECTADO');
+    console.log('Socket connected successfully');
+    setTimeout(function() {
+      sock.send("Hola Desde la APK");
+    }, 1000);
+  };
+
+  sock.onmessage = function(event) {
+    if (event.data.includes("actualizaci")) {
+      console.log("Imprimiendo ultima actualizacion");
+      $('#status_csv').text("Última actualización:" + event.data);
+      console.log(event.data);
+    }
 
 
+    if (event.data.includes("host_state")) {
+      $('#tbody').empty();
+      var employee_data = '';
+      datos = null;
+      datos = JSON.parse(event.data);
+      $('#tbody').empty();
+      $.each(datos, function(key, value) {
+        estado = 'pagado';
+        if (value.host_state ==='DOWN') estado='cancelado';
+
+        employee_data += '<tr data-status="'+ estado +'">';
+        employee_data += '<td> <div class="media">  <div class="media-body"> <h4 class="title">' + value.host+ '</h4> </div>  </div></td>';
+        employee_data += '<td> <div class="media">  <div class="media-body"> <h2 class="title"> <span class="'+estado+'">' + value.host_state  + '</span></h2></div></div> </td></tr>';
+        employee_data += '<tr>';
+        $('#tbody').html(employee_data);
+        console.log(value);
+      });
+    };
 
 
-// $(document).ready(function mywebsocketclient()){
-//
-//   cordova.plugins.firebase.auth.getCurrentUser().then(function(userInfo) {
-//   // user information or null if not logged in
-//     if(userInfo){
-//       window.location.replace("monitoreo.html");
-//     }
-//
-//   });
-//
-// }
-//
-// $(document).ready(function mywebsocketclient() {
-//
-//   $('#btnLogout').addClass("d-none");
-//   $('#monitoreo').addClass("d-none");
-//   $('#logginpage').removeClass("d-none");
-//
-//   var sock = new WebSocket("wss://54.167.147.1");
-//
-//
-//   sock.onopen = function(event) {
-//     $('#status').text('CONECTADO');
-//     console.log('Socket connected successfully');
-//     setTimeout(function() {
-//       sock.send("Hola Desde la APK");
-//     }, 1000);
-//   };
-//
-//   sock.onmessage = function(event) {
-//     if (event.data.includes("CSV")) {
-//       $('#status_csv').text("Última actualización:" + event.data);
-//       console.log(event.data);
-//     }
-//
-//
-//     if (event.data.includes("host_state")) {
-//       $('#tbody').empty();
-//       var employee_data = '';
-//       datos = null;
-//       datos = JSON.parse(event.data);
-//       $('#tbody').empty();
-//       $.each(datos, function(key, value) {
-//         estado = 'pagado';
-//         if (value.host_state ==='DOWN') estado='cancelado';
-//
-//         employee_data += '<tr data-status="'+ estado +'">';
-//         employee_data += '<td> <div class="media">  <div class="media-body"> <h4 class="title">' + value.host+ '</h4> </div>  </div></td>';
-//         employee_data += '<td> <div class="media">  <div class="media-body"> <h2 class="title"> <span class="'+estado+'">' + value.host_state  + '</span></h2></div></div> </td></tr>';
-//         employee_data += '<tr>';
-//         $('#tbody').html(employee_data);
-//         console.log(value);
-//       });
-//     };
-//
-//
-//   };
-//
-//   sock.onclose = function(e) {
-//     $('#status').text('DESCONECTADO');
-//     sock = null
-//     setTimeout(mywebsocketclient, 5000)
-//   };
-//
-//   timeout();
-//
-//   function timeout() {
-//     setTimeout(function() {
-//     sock.send("Keep Alive");
-//       console.log("Keep Alive");
-//       timeout();
-//     }, 10000);
-//   }
-//
-//   sock.onerror = function(e) {
-//
-//   };
-//
-// });
+  };
+
+  sock.onclose = function(e) {
+    $('#status').text('DESCONECTADO');
+    sock = null
+    setTimeout(mywebsocketclient, 5000)
+  };
+
+  timeout();
+
+  function timeout() {
+    setTimeout(function() {
+    sock.send("Keep Alive");
+      console.log("Keep Alive");
+      timeout();
+    }, 10000);
+  }
+
+  sock.onerror = function(e) {
+
+  };
+
+});
